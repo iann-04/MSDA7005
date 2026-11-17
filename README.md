@@ -1,4 +1,4 @@
-# MSDA7005 · Upworthy headline analysis
+# MSDA7005 group assignment
 
 We use Upworthy A/B test data to study how negative wording relates to headline click-through rates and whether that relationship varies with linguistic complexity.
 
