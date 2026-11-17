@@ -1,22 +1,23 @@
 # MSDA7005 · Upworthy headline analysis
 
-This project examines the association between negative wording and headline click-through rates, and whether the association varies with linguistic complexity.
+We use Upworthy A/B test data to study how negative wording relates to headline click-through rates and whether that relationship varies with linguistic complexity.
 
-## Run the notebooks
+## Run
 
-Install the Python dependencies with `python -m pip install -r requirements.txt`. Start JupyterLab in this directory with `jupyter lab`.
+1. Install the Python dependencies with `python -m pip install -r requirements.txt`.
+2. Extract `regression_df_update_06122024.csv.zip` next to the notebooks. Download [NRC Emotion Lexicon v0.92](https://www.saifmohammad.com/WebPages/AccessResource.htm) from the official source and place the word-level file beside the notebooks as `NRC-emotion-lexicon-wordlevel-alphabetized-v0.92.txt`.
+3. Start JupyterLab with `jupyter lab`, then run all cells in order in `01_data_processing.ipynb`, `02_rq1.ipynb`, and `03_rq2.ipynb`.
 
-1. Download the **NRC Emotion Lexicon v0.92** from the [official resource page](https://www.saifmohammad.com/WebPages/AccessResource.htm). Extract `NRC-emotion-lexicon-wordlevel-alphabetized-v0.92.txt` next to the notebooks. The lexicon's terms restrict redistribution. Extract `regression_df_update_06122024.csv.zip` in the same directory to obtain the original Upworthy CSV.
-2. Run `01_data_processing.ipynb` to clean and score the headlines.
-3. Run `02_rq1.ipynb` for the main association, within-experiment comparison, and exploratory contrasts.
-4. Run `03_rq2.ipynb` for the interaction, within-experiment comparison, and scoring sensitivity analysis.
+The default output directory is `7005_notebook_outputs/`. To run just RQ1 or RQ2, extract the committed `upworthy_v2_scored.csv.zip` in that directory first. Use `UPWORTHY_DATA_DIR` and `UPWORTHY_RUN_DIR` to change the input and output locations. Choose an empty output directory for a fresh run.
 
-The notebooks use `7005_notebook_outputs/` by default. It contains the scored dataset, result tables, and figures, so the two analysis notebooks can also start from the committed scored data. Set `UPWORTHY_DATA_DIR` or `UPWORTHY_RUN_DIR` to point to another input or output directory.
+## Figures and tables
 
-For RQ2, use the experiment-clustered columns in the CSVs for inference. The ordinary-SE sensitivity figure highlights selected specifications. The full three-rule comparison is in `RQ2_all_alternative_scoring.csv`.
+| Notebook | PPT figures | CSVs |
+| --- | --- | --- |
+| 01 Data processing | A/B test sizes and the negative-word distribution. The example headline pair appears as a table inside the notebook. | Scored headlines for both research questions |
+| 02 RQ1 | Predicted CTR, within-experiment comparison, and the exploratory presence/dose comparison | M1 regression and exploratory contrasts |
+| 03 RQ2 | Four-point comparison, scoring sensitivity, and observed negative-word shares by Fog group | M2 regression, all three scoring variants, and predicted click contrasts |
 
-## Data sources
+The four-point and selected scoring plots label ordinary model-based intervals to match the presentation. The RQ2 CSVs also report experiment-clustered intervals. For the main interaction and change in gains between low and high Fog, the clustered intervals span zero.
 
-- [Upworthy study data and replication materials](https://osf.io/uscpf/).
-- [NRC Emotion Lexicon, Mohammad and Turney](https://www.saifmohammad.com/WebPages/AccessResource.htm).
-
+[Upworthy study data and replication materials](https://osf.io/uscpf/)
